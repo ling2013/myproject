@@ -1,0 +1,100 @@
+
+<ul id="container">
+
+</ul>
+<script>
+    $(function(){
+
+        var jsonData =
+                [{"subnetId":1,"subnetNode":-1,"subnetRemark":"状态自带","subnetName":"中心网络"},
+                    {"subnetId":2,"subnetNode":1,"subnetRemark":"好好的","subnetName":"北京"},
+                    {"subnetId":3,"subnetNode":1,"subnetRemark":"大唐电信","subnetName":"大唐电信"},
+                    {"subnetId":4,"subnetNode":1,"subnetRemark":"","subnetName":"上海"},
+                    {"subnetId":5,"subnetNode":4,"subnetRemark":"","subnetName":"中国联通"},
+                    {"subnetId":6,"subnetNode":3,"subnetRemark":"","subnetName":"移动"},
+                    {"subnetId":7,"subnetNode":2,"subnetRemark":"","subnetName":"你好"}];
+
+        var ul='';
+        function createTree(node){
+             ul='';
+            for(var i in jsonData){
+                if(node==jsonData[i].subnetNode){
+                    ul+='<ul><li>'+jsonData[i].subnetName+'</li>'+createTree(jsonData[i].subnetId)+'</ul>';
+                }
+            }
+            return ul;
+        }
+        createTree(-1);
+        $('#container').append(ul);
+
+
+
+//        function createTree($node){
+//            var cnt = "";
+//            if($node == null){
+//                for(i in jsonData){
+//                    var leaf = jsonData[i];
+//                    if(leaf['subnetNode'] == -1){
+//                        cnt += toHtml(leaf);
+//                        cnt += createTree(leaf);
+//                        break;
+//                    }
+//                }
+//
+//            }else{
+//                var index = $node["subnetId"];
+//                for(i in jsonData){
+//                    var leaf = jsonData[i];
+//                    if(leaf['subnetNode'] == index){
+//                        cnt += toHtml(leaf);
+//                        cnt += createTree(leaf);
+//                    }
+//                }
+//            }
+//            return cnt;
+//        }
+//
+//        function toHtml(leaf){
+//            return '<li>'+leaf.subnetId+leaf.subnetName+'</li>';
+//
+//
+//        }
+//
+//        var result = createTree();
+//        $('#container').append(result);
+
+//       function createTree(lastNode,node){
+//           var cnt = "";
+//                if(node!=null){
+//                    for(i in jsonData) {
+//                        if (node == jsonData[i].subnetNode) {
+//                            cnt+= '<li>' + toHtml(lastNode)+ jsonData[i].subnetName + '</li>';
+//                            cnt+=createTree(jsonData[i].subnetNode,jsonData[i].subnetId);
+//                        }
+//                    }
+//
+//                }else{
+//                    cnt+=createTree(-1,0);
+//                }
+//
+//          return cnt;
+//       }
+//
+//        var info =createTree();
+//
+//        $('#container').append(info);
+//
+//        function toHtml(nums){
+//            var str='';
+//            var i;
+//                for(i=0;i<=nums;i++){
+//                    str+='-';
+//                }
+//            return str;
+//        }
+//
+    });
+
+
+
+</script>

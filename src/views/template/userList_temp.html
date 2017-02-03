@@ -1,0 +1,9 @@
+<div>
+<p>您正在搜索的内容是{{curSearch}}</p>
+<dl ng-repeat="li in listData | filter:curSearch">
+    <dt ng-if="li.children.length!=0">{{li.firstWord}}</dt>
+    <dd ng-repeat="s in li.children">
+        {{s.name}}
+    </dd>
+</dl>
+</div>
