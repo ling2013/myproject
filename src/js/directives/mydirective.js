@@ -41,7 +41,7 @@ userDire.directive("userList", ['passData','sort',function (passData, sort) {
         link: function (scope, element, attr) {
             console.log('dfdfdfdfdf');
             //异步获取用户列表
-            passData.httpGet('./dist/views/template/userList.json')
+            passData.httpGet('./dist/userList.json')
                 .then(function (result) {
                     if (result.code == 0) {
                         //alert('11');
