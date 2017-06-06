@@ -6,7 +6,7 @@ var myApp = angular.module("myApp", ["ui.router","my.user.controller","my.user.d
 
 //全局配置
 myApp.constant('baseConfig', {
-    "baseUrl": "http://localhost:2020/myproject/"
+    "baseUrl": "http://localhost:2020/"
 });
 
 //基本配置
@@ -25,11 +25,11 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvid
         //}
 
     }])
-    //    .when('/main/other',['$state','dataServer',function($state,dataServer) {
-    //    if (!dataServer.user.id) {
-    //        $state.go('main');
-    //    }
-    //}]);
+        .when('/main/other',['$state','dataServer',function($state,dataServer) {
+        if (!dataServer.user.id) {
+            $state.go('main');
+        }
+    }]);
     $stateProvider.state('main', {
         url: '/main',
         templateUrl: './views/main.html'
